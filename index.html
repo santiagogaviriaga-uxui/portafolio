@@ -13,19 +13,18 @@
         }
 
         :root {
-            --bg-dark: #1A1A1A; /* Fondo general oscuro basado en la paleta */
-            --color-primary: #1C1F33; /* Azul oscuro profundo */
-            --color-secondary: #6B654B; /* Verde oliva / Grisáceo */
-            --color-accent: #FF220C; /* Rojo brillante para CTAs y destaques */
-            --color-light: #D4DF9E; /* Verde claro/crema para fondos de tarjetas y texto secundario */
-            --text-light: #FFFFFF;
-            --text-muted: #A0A0A0;
+            --bg-page: #6B654B;        /* Fondo general de la página (Oliva) */
+            --bg-blocks: #1C1F33;      /* Fondo de los bloques del layout (Azul Oscuro) */
+            --color-accent: #FF220C;   /* Rojo brillante para textos principales y enlaces */
+            --color-light: #D4DF9E;    /* Verde claro/crema para subtítulos y el botón CTA */
+            --text-main: #FF220C;      /* Rojo para los títulos principales */
+            --text-muted: #D4DF9E;     /* Crema para subtítulos */
         }
 
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            background-color: var(--bg-page);
+            color: #FFFFFF;
             line-height: 1.6;
             padding: 20px;
         }
@@ -33,85 +32,89 @@
         /* --- CONTENEDOR PRINCIPAL (GRID) --- */
         .container {
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 320px 1fr;
             gap: 24px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        /* --- COLUMNA IZQUIERDA (SIDERBAR FIJO) --- */
+        /* --- COLUMNA IZQUIERDA (SIDEBAR) --- */
         .sidebar {
             display: flex;
             flex-direction: column;
             gap: 24px;
         }
 
+        /* Bloque de Perfil Principal */
         .profile-card {
-            background-color: var(--color-light);
-            color: var(--color-primary);
+            background-color: var(--bg-blocks);
             padding: 40px 24px;
-            border-radius: 8px;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 28px;
         }
 
         .profile-card h1 {
-            font-size: 2rem;
+            color: var(--text-main);
+            font-size: 2.2rem;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
         }
 
         .profile-card .subtitle {
-            font-size: 1.5rem;
-            color: var(--color-secondary);
-            margin-top: -16px;
-            font-weight: 400;
+            font-size: 1.6rem;
+            color: var(--text-muted);
+            margin-top: -12px;
+            font-weight: 300;
         }
 
         .profile-card p {
             font-size: 0.95rem;
-            margin-top: 10px;
+            color: var(--text-main); /* Texto de la descripción en rojo según la imagen */
+            line-height: 1.5;
         }
 
-        /* Botón de Agenda (CTA) */
+        /* Botón de Agenda (CTA - Fondo Crema, Texto Negro) */
         .cta-btn {
             display: inline-flex;
             align-items: center;
             justify-content: space-between;
-            background-color: var(--color-accent);
-            color: var(--text-light);
+            background-color: var(--color-light);
+            color: #000000;
             text-decoration: none;
-            padding: 12px 20px;
+            padding: 14px 24px;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             width: fit-content;
-            gap: 12px;
-            transition: transform 0.2s ease;
-            margin-top: auto;
+            gap: 16px;
+            margin: 20px auto 0 auto; /* Centrado horizontalmente como en el wireframe */
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         .cta-btn:hover {
             transform: scale(1.03);
+            opacity: 0.9;
         }
 
-        /* Menú de Navegación/Enlaces */
+        /* Bloque de Enlaces de Navegación */
         .nav-card {
-            background-color: var(--color-primary);
+            background-color: var(--bg-blocks);
             padding: 30px 24px;
-            border-radius: 8px;
+            border-radius: 12px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            gap: 12px;
         }
 
         .nav-column h3 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--color-light);
-            margin-bottom: 12px;
+            font-size: 0.85rem;
+            text-transform: capitalize; /* "Works", "Conectemos"... */
+            color: var(--text-main);    /* Encabezados de columna en rojo */
+            margin-bottom: 16px;
+            font-weight: 600;
         }
 
         .nav-column ul {
@@ -119,18 +122,18 @@
         }
 
         .nav-column ul li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .nav-column ul li a {
-            color: var(--text-muted);
+            color: var(--text-main);    /* Enlaces en color rojo según tu imagen */
             text-decoration: none;
             font-size: 0.85rem;
-            transition: color 0.2s ease;
+            transition: opacity 0.2s ease;
         }
 
         .nav-column ul li a:hover {
-            color: var(--text-light);
+            opacity: 0.7;
         }
 
         /* --- COLUMNA DERECHA (CONTENIDO PRINCIPAL) --- */
@@ -140,25 +143,31 @@
             gap: 40px;
         }
 
-        /* Contenedor del Video */
+        /* Bloques de portafolio / placeholders (Mantienen el fondo azul oscuro) */
+        .media-placeholder {
+            background-color: var(--bg-blocks);
+            height: 450px;
+            border-radius: 12px;
+            width: 100%;
+        }
+
+        /* El contenedor del video superior */
         .video-container {
-            background-color: var(--color-secondary);
+            background-color: var(--bg-blocks);
             aspect-ratio: 16 / 9;
-            border-radius: 8px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             cursor: pointer;
         }
 
-        /* Icono de Play aproximado */
         .play-button {
             width: 80px;
             height: 80px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border: 3px solid var(--text-light);
-            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 3px solid #FFFFFF;
+            border-radius: 50%;
             position: relative;
             display: flex;
             align-items: center;
@@ -172,34 +181,27 @@
             height: 0;
             border-style: solid;
             border-width: 15px 0 15px 25px;
-            border-color: transparent transparent transparent var(--text-light);
+            border-color: transparent transparent transparent #FFFFFF;
             margin-left: 6px;
         }
 
-        /* Secciones de Contenido (Texto + Bloque Gris) */
+        /* Secciones de texto fuera de los bloques oscuros */
         .content-section {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        .media-placeholder {
-            background-color: var(--color-primary);
-            height: 400px;
-            border-radius: 8px;
-            width: 100%;
-        }
-
         .text-block h2 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-            color: var(--color-light);
+            font-size: 2rem;
+            color: #FFFFFF; /* Texto blanco para resaltar sobre el fondo oliva general */
+            margin-bottom: 8px;
         }
 
         .text-block p {
-            color: var(--text-muted);
+            color: #EAEAEA; /* Un gris muy claro/blanco para la lectura del lorem ipsum */
             font-size: 1rem;
-            max-width: 90%;
+            max-width: 95%;
         }
 
         /* --- RESPONSIVE DESIGNS --- */
@@ -207,12 +209,8 @@
             .container {
                 grid-template-columns: 1fr;
             }
-            .sidebar {
-                position: relative;
-                top: 0;
-            }
             .media-placeholder {
-                height: 250px;
+                height: 280px;
             }
         }
     </style>
@@ -222,6 +220,7 @@
     <div class="container">
         
         <aside class="sidebar">
+            
             <div class="profile-card">
                 <div>
                     <h1>Santiago Gaviria García</h1>
